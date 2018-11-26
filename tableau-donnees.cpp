@@ -4,32 +4,62 @@
 #include "tableau-donnees.h"
 
 int moyenne(vector<int> t) {
-    // Remplacer la ligne suivante par le code adéquat
-    throw runtime_error("Fonction moyenne non implanté ligne 8");
+	int total = 0;
+	for (int i = 0; i < t.size(); i++) {
+		total += t[i];
+	}
+	return total / t.size();
 }
 
 int somme(vector<int> t) {
-    // Remplacer la ligne suivante par le code adéquat
-    throw runtime_error("Fonction somme non implanté ligne 13");
+	int total = 0;
+	for (int i = 0; i < t.size(); i++) {
+		total += t[i];
+	}
+	return total;
 }
 
 int sommePartielle(vector<int> t, int i) {
-    // Remplacer la ligne suivante par le code adéquat
-    throw runtime_error("Fonction sommePartielle non implanté ligne 18");
+	int total = 0;
+	for (int j = i; j < t.size(); j++) {
+		total += t[j];
+	}
+	return total;
 }
 
 
 int indiceMax(vector<int> t) {
-    // Remplacer la ligne suivante par le code adéquat
-    throw runtime_error("Fonction indiceMax non implanté ligne 24");
+	int max = 0;
+	int indice;
+	if (t.size() <= 0) {
+		return -1;
+	}
+	for (int i = 0; i < t.size(); i++) {
+		if (max < t[i]) {
+			max = t[i];
+			indice = i;
+		}
+	}
+	return indice;
 }
 
 vector<vector<int>> litTableauInt(string nom_fichier, int nb_colonnes) {
-    // Remplacer la ligne suivante par le code adéquat
-    throw runtime_error("Fonction litTableauInt non implanté ligne 29");
+	ifstream donnees(nom_fichier);
+	vector<vector<int>> tab2D;
+	vector<int> tab_ligne(nb_colonnes);
+	for (int i = 0; !donnees.eof(); i++) {
+		for (int j = 0; j < nb_colonnes ; j++) {
+			donnees >> tab_ligne[j];
+		}
+		if (!donnees.eof())		//Obligatoire sinon repete la dernier ligne
+			tab2D.push_back(tab_ligne);
+	}
+	return tab2D;
 }
 
 vector<int> colonne(vector<vector<int>> t, int i) {
-    // Remplacer la ligne suivante par le code adéquat
-    throw runtime_error("Fonction colonne non implanté ligne 34");
+	vector<int> tab(t.size());
+	for (int j = 0; j < t.size(); j++)
+		tab[j] = t[j][i];
+	return tab;
 }

@@ -1,10 +1,51 @@
+#include <stdexcept>
+/** @file **/
+#include <fstream>
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+/** Infrastructure minimale de test **/
+#define ASSERT(test) if (!(test)) cout << "Test failed in file " << __FILE__ << " line " << __LINE__ << ": " #test << endl
+
+
+/** Construction d'un tableau 2D d'entiers lu depuis un fichier
+ * @param fichier le nom d'un fichier contenant un nombre fixe
+ * d'entiers par lignes, séparés par des espaces
+ * @param nb_colonnes le nombre de colonnes du fichier
+ * @return un tableau d'entiers à deux dimensions
+ **/
+vector<vector<int>> litTableauInt(string nom_fichier, int nb_colonnes) {
+	ifstream donnees(nom_fichier);
+	vector<vector<int>> tab2D;
+	vector<int> tab_ligne(nb_colonnes);
+	for (int i = 0; !donnees.eof(); i++) {
+		for (int j = 0; j < nb_colonnes ; j++) {
+			donnees >> tab_ligne[j];
+		}
+		if (!donnees.eof())		//Obligatoire sinon repete la dernier ligne
+			tab2D.push_back(tab_ligne);
+	}
+	return tab2D;
+}
+
+/** Test de la fonction litTableauInt **/
+void testLitTableauInt() {
+	vector<vector<int>> t = litTableauInt("donnees/tonnages_des_dechets_bacs_jaunes.txt", 13);
+	ASSERT(t[0][0] == 75007);
+	ASSERT(t[3][5] == 876);
+	ASSERT(t[19][12] == 235);
+}
+
+
 /** Extraction d'une colonne d'un tableau d'entiers
  * @param t un tableau 2D d'entiers
  * @param i un numéro de colonne
  * @return la colonne j, représentée par un vecteur d'entiers
  **/
 vector<int> colonne(vector<vector<int>> t, int j) {
-	vector<int> tab(t.size());	
+	vector<int> tab(t.size());
 	for (int i = 0; i < t.size(); i++)
 		tab[i] = t[i][j];
 	return tab;
@@ -23,11 +64,11 @@ void testColonne() {
  * @return la somme des valeurs
  **/
 int somme(vector<int> t) {
-    int total = 0;
-    for (int i = 0; i < t.size(); i++) {
-        total += t[i];
-    }
-    return total;
+	int total = 0;
+	for (int i = 0; i < t.size(); i++) {
+		total += t[i];
+	}
+	return total;
 }
 
 /** Renvoie la moyenne d'un tableau d'entier
@@ -35,11 +76,11 @@ int somme(vector<int> t) {
  * @return la moyenne (entière) des valeurs
  **/
 int moyenne(vector<int> t) {
-    int total = 0;
-    for (int i = 0; i < t.size(); i++) {
-        total += t[i];
-    }
-    return total / t.size();
+	int total = 0;
+	for (int i = 0; i < t.size(); i++) {
+		total += t[i];
+	}
+	return total / t.size();
 }
 
 /** Renvoie l'indice de la valeur maximale du tableau
@@ -47,18 +88,18 @@ int moyenne(vector<int> t) {
  * @return l'indice de la valeur maximale ou -1 si le tableau est vide
  **/
 int indiceMax(vector<int> t) {
-    int max = 0;
-    int indice;
-    if (t.size() <= 0) {
-        return -1;
-    }
-    for (int i = 0; i < t.size(); i++) {
-        if (max < t[i]) {
-            max = t[i];
-            indice = i;
-        }
-    }
-    return indice;
+	int max = 0;
+	int indice;
+	if (t.size() <= 0) {
+		return -1;
+	}
+	for (int i = 0; i < t.size(); i++) {
+		if (max < t[i]) {
+			max = t[i];
+			indice = i;
+		}
+	}
+	return indice;
 }
 
 /** Lance les tests de litTableauInt et colonne

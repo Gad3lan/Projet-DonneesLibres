@@ -4,36 +4,35 @@
 #include "tableau-donnees.h"
 using namespace std;
 
-/** Infrastructure minimale de test **/
-#define ASSERT(test) if (!(test)) cout << "Test failed in file " << __FILE__ << " line " << __LINE__ << ": " #test << endl
+/** Infrastructure minimale de test modifiée pour visualiser les réussites**/
+#define ASSERT(test, t) if (!(test)) cout << " Test failed in file " << __FILE__ << " line " << __LINE__ << ": " #test << endl; else if (t == 1) cout << "\tOK!"; else if (t == 2) cout << "\t\tOK!"
 
 vector<int> c = { 1, 5, 3, 5, 1 };
 vector<vector<int>> t = { {1, 2}, {2,4}, {3,1}, {0,0} };
 
 void testMoyenne() {
-    ASSERT( moyenne(c) == 3 );
+    ASSERT( moyenne(c) == 3, 2 );
 }
 
 void testSomme() {
-    ASSERT( somme({}) == 0 );
-    ASSERT( somme(c)  == 15 );
+    ASSERT( somme({}) == 0,  0 );
+    ASSERT( somme(c)  == 15, 2 );
 }
 
 void testSommePartielle() {
-    ASSERT( sommePartielle(c,0) == 15);
-    ASSERT( sommePartielle(c,1) == 14);
-    ASSERT( sommePartielle(c,2) == 9);
-    ASSERT( sommePartielle(c,5) == 0);
+    ASSERT( sommePartielle(c,0) == 15, 0 );
+    ASSERT( sommePartielle(c,1) == 14, 0 );
+    ASSERT( sommePartielle(c,2) == 9,  0 );
+    ASSERT( sommePartielle(c,5) == 0,  2 );
 }
 
 
 void testIndiceMax() {
-    // Remplacer la ligne suivante par le code adéquat
-    throw runtime_error("Fonction testIndiceMax non implanté ligne 32");
+	ASSERT(  indiceMax(colonne(litTableauInt("donnees/volumes_d_eau_distribues.txt", 2), 1)) == 11, 1 );
 }
 
 void testLitTableauInt() {
-    ASSERT( litTableauInt("donnees/volumes_d_eau_distribues.txt", 2) ==
+    ASSERT(  litTableauInt("donnees/volumes_d_eau_distribues.txt", 2) ==
             vector<vector<int>>({
                     {  4, 15688700 },
                     {  7, 16049700 },
@@ -47,23 +46,30 @@ void testLitTableauInt() {
                     { 10, 16592900 },
                     { 11, 15672000 },
                     {  5, 17711200 },
-            }) );
+            }), 1 );
 }
 
 void testColonne() {
-    // Remplacer la ligne suivante par le code adéquat
-    throw runtime_error("Fonction testColonne non implanté ligne 55");
+	vector<vector<int>> t = {{1,2,3},{4,5,6},{7,8,9},{10,11,12}};
+	ASSERT( colonne(t,0) == vector<int>({1,4,7,10}), 0 );
+	ASSERT( colonne(t,1) == vector<int>({2,5,8,11}), 0 );
+	ASSERT( colonne(t,2) == vector<int>({3,6,9,12}), 2 );
 }
 
 int main() {
-    cout << "Lancement des tests de moyenne:" << endl;
+    cout << "Lancement des tests de moyenne:";
     testMoyenne();
-    cout << "Lancement des tests de somme:" << endl;
+	cout << endl;
+    cout << "Lancement des tests de somme:";
     testSomme();
-    cout << "Lancement des tests de indiceMax:" << endl;
+	cout << endl;
+    cout << "Lancement des tests de indiceMax:";
     testIndiceMax();
-    cout << "Lancement des tests de litTableauInt:" << endl;
+	cout << endl;
+    cout << "Lancement des tests de litTableauInt:";
     testLitTableauInt();
-    cout << "Lancement des tests de colonne:" << endl;
+	cout << endl;
+    cout << "Lancement des tests de colonne:";
     testColonne();
+	cout << endl;
 }

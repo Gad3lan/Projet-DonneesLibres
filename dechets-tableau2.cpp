@@ -31,6 +31,16 @@ vector<int> dechetsAnnuels(vector<vector<int>> t) {
  * - l'arrondissement avec le plus de déchets pour l'année (et son tonnage annuel)
  **/
 int main() {
-    // Remplacer la ligne suivante par le code adéquat
-    throw runtime_error("Fonction main non implanté ligne 35");
+	int mois;
+	vector<vector<int>> t = litTableauInt("donnees/tonnages_des_dechets_bacs_jaunes.txt", 13);
+	vector<int> dechets_annuels_arr = dechetsAnnuels(t);
+	cout << "Entrez un numéro de mois (entre 1 et 12) : ";
+	cin >> mois;
+	vector<int> tab = colonne(t, mois);
+	int arr_max_mois = indiceMax(tab);
+	int arr_max_annee = indiceMax(dechetsAnnuels(t));
+	cout << "La somme des déchets pour ce mois est de : " << somme(tab) << "\nLa moyenne des déchets pour ce mois est de : " << moyenne(tab) << "\nL’arrondissement avec le plus de déchets pour ce mois est : " << t[arr_max_mois][0] << " avec " << t[arr_max_mois][mois] << " tonnes de déchets." << endl;
+	cout << "---" << endl;
+	cout << "La somme des déchets annuel est de " << somme(dechetsAnnuels(t)) << endl << "La moyenne des déchets pour l'année est de " << moyenne(dechetsAnnuels(t)) << endl << "L'arrondissement avec le plus de déchets de l'année est : " << t[arr_max_annee][0] << " avec " << dechets_annuels_arr[arr_max_annee] << " tonnes de déchets." << endl;
+	return 1;
 }
