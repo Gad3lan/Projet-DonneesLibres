@@ -3,20 +3,19 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
-#inculde <string>
+#include <string>
 using namespace std;
 
 int main() {
-    ifstream donnees("donnes/volumes_d_eau_distribues.csv");
-    string entete;
-    getline(donnees, entete);
-	
-	
-	 string mois, string volume_str;
-	 int total_volume = 0;
-     while(getline(fichier, mois, ';') && getline(fichier, volume_str))
-          total_volume += stoi(volume_str);
-     cout << "Le volume total d'eau distribué de cette année est de : " << total_volume << "L" << endl;
-     return 1;
-}
+	ifstream donnees("donnees/volumes_d_eau_distribues.csv");
+	int vol_total = 0;
+	string entete;
+	string mois, vol_str;
 
+	getline(donnees, entete);
+	while(getline(donnees, mois, ';') && getline(donnees, vol_str)) {
+		vol_total += stoi(vol_str);
+	}
+	cout << "Le volume total d'eau distribué de cette année est de : " << vol_total << "L" << endl;
+	return 1;
+}

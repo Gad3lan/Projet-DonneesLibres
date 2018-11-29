@@ -7,34 +7,35 @@
 using namespace std;
 
 int main() {
-    ifstream fichier("donnees/volumes_d_eau_distribues.csv");
-    string entete;
-    getline(fichier, entete);
-    cout << "Entête: " << entete << endl;
+	ifstream fichier("donnees/volumes_d_eau_distribues.csv");
+	int volume;
+	string entete;
+	string mois;
+	string volume_str;
 
-    string mois;
-    string volume_str;
-    int volume;
-    getline(fichier, mois, ';');
-    getline(fichier, volume_str);
+	getline(fichier, entete);
+	cout << "Entête: " << entete << endl;
+	getline(fichier, mois, ';');
+	getline(fichier, volume_str);
 
-    // Sous windows, les fichiers texte utilisent deux
-    // caractères pour chaque fin de ligne:
-    // - '\r': retour au début de la ligne
-    // - '\n': saut de ligne
-    //
-    // Apparemment le fichier de donnée a été créé par/pour Windows.
-    // Si on l'utilise sous Linux, il faut supprimer le '\r' qui n'est pas
-    // géré automatiquement par getline.
-    if ( volume_str.size() > 0 and volume_str[volume_str.length()-1] == '\r' )
-        volume_str.resize(volume_str.length() - 1);
-    // Conversion du volume en entier
-        istringstream(volume_str) >> volume;
+	// Sous windows, les fichiers texte utilisent deux
+	// caractères pour chaque fin de ligne:
+	// - '\r': retour au début de la ligne
+	// - '\n': saut de ligne
+	//
+	// Apparemment le fichier de donnée a été créé par/pour Windows.
+	// Si on l'utilise sous Linux, il faut supprimer le '\r' qui n'est pas
+	// géré automatiquement par getline.
+	if ( volume_str.size() > 0 and volume_str[volume_str.length()-1] == '\r' ) {
+		volume_str.resize(volume_str.length() - 1);
+		// Conversion du volume en entier
+		istringstream(volume_str) >> volume;
+	}
 
-    cout << "Mois: «" << mois << "»" << endl;
-    cout << "Volume: «" << volume_str << "»" << endl;
-    cout << "Volume (en entier): " << volume << endl;
+	cout << "Mois: «" << mois << "»" << endl;
+	cout << "Volume: «" << volume_str << "»" << endl;
+	cout << "Volume (en entier): " << volume << endl;
 
-    fichier.close();
-    return 0;
+	fichier.close();
+	return 0;
 }
