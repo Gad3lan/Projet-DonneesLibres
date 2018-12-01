@@ -14,6 +14,6 @@ int main() {
 		vol_total += vol;
 	}
 	vol_moyen = vol_total/ 12;
-	cout << "Le volume moyen d'eau distribué par mois de cette année est de : " << vol_moyen << "L" << endl;
+	cout << "Le volume moyen par mois d'eau distribue dans l'année est de : " << vol_moyen << "L" << endl;
 	return 1;
 }

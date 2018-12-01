@@ -16,6 +16,6 @@ int main() {
 	while(getline(donnees, mois, ';') && getline(donnees, vol_str)) {
 		vol_total += stoi(vol_str);
 	}
-	cout << "Le volume total d'eau distribué de cette année est de : " << vol_total << "L" << endl;
+	cout << "Le volume total d'eau distribué dans l'année est de : " << vol_total << "L" << endl;
 	return 1;
 }

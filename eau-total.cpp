@@ -13,6 +13,6 @@ int main() {
 	while(data >> month && data >> volume) {
 		total_volume += volume;
 	}
-	cout << "Le volume total d'eau distribué de cette année est de : " << total_volume << "L" << endl;
+	cout << "Le volume total d'eau distribué dans l'année est de : " << total_volume << "L" << endl;
 	return 1;
 }
