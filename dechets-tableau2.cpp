@@ -35,12 +35,12 @@ int main() {
 	int mois;
 	vector<vector<int>> t = litTableauInt("donnees/tonnages_des_dechets_bacs_jaunes.txt", 13);
 	vector<int> dechets_annuels_arr = dechetsAnnuels(t);
-	vector<int> tab = colonne(t, mois);
-	int arr_max_mois = indiceMax(tab);
 	int arr_max_annee = indiceMax(dechetsAnnuels(t));
 
 	cout << "Entrez un numéro de mois (entre 1 et 12) : ";
 	cin >> mois;
+	vector<int> tab = colonne(t, mois);
+	int arr_max_mois = indiceMax(tab);
 	cout << "La somme des déchets pour ce mois est de : " << somme(tab) << endl;
 	cout << "La moyenne des déchets pour ce mois est de : " << moyenne(tab) << endl;
 	cout << "L’arrondissement avec le plus de déchets pour ce mois est : " << t[arr_max_mois][0] << " avec " << t[arr_max_mois][mois] << " tonnes de déchets." << endl;

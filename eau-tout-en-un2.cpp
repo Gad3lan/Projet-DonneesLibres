@@ -17,6 +17,6 @@ int main() {
 
 	cout << "Le volume d´eau total sur l´année est de : " << somme(valeurs) << endl;
 	cout << "La moyenne d´eau utilisée par mois est de : " << moyenne(valeurs) << endl;
-	cout << "Le mois avec le plus gros volume d´eau est" << mois[t[0][indiceMax(valeurs)] - 1] << " avec " << t[1][indiceMax(valeurs)] << " litres." << endl;
+	cout << "Le mois avec le plus gros volume d´eau est " << mois[indiceMax(valeurs) - 1]  << " avec " << t[1][indiceMax(valeurs)] << " litres." << endl;
 	return 1;
 }

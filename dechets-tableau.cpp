@@ -120,12 +120,12 @@ int indiceMax(vector<int> t) {
 int main() {
 	int mois;
 	vector<vector<int>> t = litTableauInt("donnees/tonnages_des_dechets_bacs_jaunes.txt", 13);
-	vector<int> tab = colonne(t, mois);
 
 	testLitTableauInt();
 	testColonne();
 	cout << "Entrez un numéro de mois (entre 1 et 12) : ";
 	cin >> mois;
+	vector<int> tab = colonne(t, mois);
 	cout << "La somme des déchets pour ce mois est de : " << somme(tab) << endl;
 	cout << "La moyenne des déchets pour ce mois est de : " << moyenne(tab) << endl;
 	cout << "L’arrondissement avec le plus de déchets pour ce mois est : " << t[indiceMax(tab)][0] << " avec " << t[indiceMax(tab)][mois] << " tonnes de déchets." << endl;

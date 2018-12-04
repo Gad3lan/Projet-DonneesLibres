@@ -8,7 +8,7 @@ using namespace std;
 
 int main() {
 	ifstream fichier("donnees/volumes_d_eau_distribues.csv");
-	int volume;
+	int volume = 0;
 	string entete;
 	string mois;
 	string volume_str;
