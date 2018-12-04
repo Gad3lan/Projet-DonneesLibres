@@ -1,5 +1,0 @@
-Lancement des tests de moyenne:		OK!
-Lancement des tests de somme:		OK!
-Lancement des tests de indiceMax:	OK!
-Lancement des tests de litTableauInt:	OK!
-Lancement des tests de colonne:		OK!

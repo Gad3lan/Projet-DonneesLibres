@@ -1,4 +1,4 @@
-CXXFLAGS=-Wall -pedantic -std=c++11 -g -Wno-sign-compare
+./CXXFLAGS=-Wall -pedantic -std=c++11 -g -Wno-sign-compare
 LINK.o = $(LINK.cc)
 
 PROGRAMS=eau-total eau-moyen eau-max eau-tout-en-un \
@@ -35,3 +35,9 @@ doc:
 clean:
 	-rm *.o
 	-rm $(PROGRAMS)
+	-rm *.dSYM/Contents/Info.plist
+	-rm *.dSYM/Contents/Resources/DWARF/*
+	-rmdir *.dSYM/Contents/Resources/DWARF
+	-rmdir *.dSYM/Contents/*
+	-rmdir *.dSYM/*
+	-rmdir *.dSYM
