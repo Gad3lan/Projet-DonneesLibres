@@ -15,11 +15,21 @@ PROGRAMS=eau-total eau-moyen eau-max eau-tout-en-un \
 
 all: $(PROGRAMS)
 
-tableau-donnees-test:     tableau-donnees.o tableau-donnees-test.o
+tableau-donnees-test: tableau-donnees.o tableau-donnees-test.o
 tableau-donnees-csv-test: tableau-donnees-csv.o tableau-donnees-csv-test.o
 
 dechets-tableau2: dechets-tableau2.o tableau-donnees.o
 eau-tout-en-un2: eau-tout-en-un2.o tableau-donnees.o
+
+dechets-tableau: dechets-tableau.o
+eau-tout-en-un: eau-tout-en-un.o
+
+eau-max: eau-max.o
+eau-max-csv: eau-max-csv.o
+eau-moyen: eau-moyen.o
+eau-moyen-csv: eau-moyen-csv.o
+eau-total: eau-total.o
+eau-total-csv: eau-total-csv.o
 
 arbres-hauteur: tableau-donnees-csv.o tableau-donnees.o arbres-hauteur.o
 dechets-csv: tableau-donnees-csv.o dechets-csv.o

@@ -121,6 +121,6 @@ int main() {
 	testIndiceMax();
 	cout << "Le volume total d’eau distribué dans l’année est de : " << somme(t) << endl;
 	cout << "Le volume moyen par mois d’eau distribué dans l’année est de : " << moyenne(t) << endl;
-	cout << "Le mois où on a distribué le plus d’eau est " << mois[indiceMax(t)] << " avec un volume de " << t[indiceMax(t) - 1] << endl;
+	cout << "Le mois avec le plus gros volume d´eau est " << mois[indiceMax(t)] << " avec " << t[indiceMax(t) - 1] << "litres." << endl;
 	return 0;
 }

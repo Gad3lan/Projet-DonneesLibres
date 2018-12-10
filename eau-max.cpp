@@ -18,6 +18,6 @@ int main() {
 			vol_max = vol;
 			vol_max_mois = mois;
 		}
-	cout << "Le moois où on a distribué le plus d'eau est " << nom_mois[vol_max_mois - 1] << " avec un volume de  " << vol_max << "L" << endl;
+	cout << "Le mois où on a distribué le plus d'eau est " << nom_mois[vol_max_mois - 1] << " avec un volume de " << vol_max << "L" << endl;
 	return 1;
 }

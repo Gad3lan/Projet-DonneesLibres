@@ -22,6 +22,7 @@ int indiceMax(vector<double> t) {
 		}
 	}
 	return indice_max;
+    cout << 1;
 }
 
 int indiceMin(vector<double> t) {
@@ -64,7 +65,6 @@ vector<double> moyenneMinMarque(vector<double> t) {
 
 	double tot_tmp = t[0];
 	int taille = 1;
-	int x = 0;
 
 	for (int i = 1; i < t.size(); i++) {
 		if (tab2D[i][0] == tab2D[i-1][0]) {
@@ -73,13 +73,10 @@ vector<double> moyenneMinMarque(vector<double> t) {
 		} else {
 			moyenne_marque.push_back(tot_tmp/taille);
 			nb_nom_marque.push_back((double)i-1);
-			cout << tab2D[nb_nom_marque[nb_nom_marque.size()-1]][0] << " " << moyenne_marque[moyenne_marque.size()-1] << " " << tot_tmp << " " << taille << endl;
 			tot_tmp = t[i];
-			x += taille;
 			taille = 1;
 		}
 	}
-	cout << x << endl;
 	return {nb_nom_marque[indiceMin(moyenne_marque)], moyenne_marque[indiceMin(moyenne_marque)]};
 }
 
