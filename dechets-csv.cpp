@@ -10,7 +10,6 @@ using namespace std;
 int main() {
     vector<vector<string>> t = litTableauCSV("donnees/tonnages_des_dechets_bacs_jaunes.csv");
     vector<float> poids_arr;
-    int tout_paris;
     int arr_max;
     float total;
     float poids_arr_max = 0;
@@ -35,6 +34,6 @@ int main() {
             arr_max = i;
         }
     }
-    cout << "L'arrondissement qui a produit le plus de dechets est le " << t[arr_max][0] << " avec une masse totale de " << poids_arr[arr_max] << " tonnes.";
+    cout << "L'arrondissement qui a produit le plus de dechets est le " << t[arr_max][0] << " avec une masse totale de " << poids_arr[arr_max] << " tonnes." << endl;
 	return 0;
 }

@@ -11,7 +11,7 @@ int main() {
 	ifstream donnees("donnees/tonnages_des_dechets_bacs_jaunes.txt");
 	int arr, arr_max, arr_dechets_max, dechets, total_dechets_arr;
 	string indice = "er ";
-	
+
 	for (int i = 0; i < 20; i++) {
 		total_dechets_arr = 0;
 		donnees >> arr;
@@ -27,6 +27,6 @@ int main() {
 	if (arr_max - 75000 > 1) {
 		indice = "eme ";
 	}
-	cout << "Le " << arr_max - 75000 << indice << "arrondissement est celui qui a produit le plus de dechets dans l'année avec un total de :" << arr_dechets_max << " tonnes" << endl;
+	cout << "Le " << arr_max - 75000 << indice << "arrondissement est celui qui a produit le plus de dechets dans l'année avec un total de : " << arr_dechets_max << " tonnes" << endl;
 	return 1;
 }

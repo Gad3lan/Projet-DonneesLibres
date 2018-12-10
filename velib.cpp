@@ -27,7 +27,6 @@ int main () {
     vector<int> stations_dist_min(2);
     double distance;
     double distance_min = 99999;
-    double pi = 3.14159265358979323846;
 
     for (int i = 0; i < t.size() - 1; i++) {
         for (int j = i + 1; j < t.size(); j++) {

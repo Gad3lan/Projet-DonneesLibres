@@ -4,8 +4,8 @@
 #include "tableau-donnees-csv.h"
 using namespace std;
 
-/** Infrastructure minimale de test **/
-#define ASSERT(test) if (!(test)) cout << "Test failed in file " << __FILE__ << " line " << __LINE__ << ": " #test << endl
+/** Infrastructure minimale de test modifiée pour visualiser les réussites**/
+#define ASSERT(test, t) if (!(test)) cout << " Test failed in file " << __FILE__ << " line " << __LINE__ << ": " #test << endl; else if (t == 1) cout << "\tOK!\n"; else if (t == 2) cout << "\t\tOK!\n"
 
 vector<vector<string>> donnees = {
 					{ "avr-11", "15688700" },
@@ -33,25 +33,28 @@ vector<vector<string>> petites_donnees = { { "a0", "b0"}, { "a1", "b1" } };
 vector<string> t = colonne(litTableauCSV("donnees/volumes_d_eau_distribues.csv"), 1);
 
 void litTableauCSVTest() {
-	ASSERT( litTableauCSV("donnees/volumes_d_eau_distribues.csv", 2) == donnees );
-	ASSERT( litTableauCSV("donnees/volumes_d_eau_distribues.csv") == donnees );
+	ASSERT( litTableauCSV("donnees/volumes_d_eau_distribues.csv", 2) == donnees, 0 );
+	ASSERT( litTableauCSV("donnees/volumes_d_eau_distribues.csv") == donnees, 1 );
 }
 
 void colonneTest() {
-	ASSERT( colonne(litTableauCSV("donnees/volumes_d_eau_distribues.csv"), 0) == donnees_str);
+	ASSERT( colonne(litTableauCSV("donnees/volumes_d_eau_distribues.csv"), 0) == donnees_str, 1 );
 }
 
 void conversionTest() {
-	ASSERT( conversionInt(t) == donnees_int );
-	ASSERT( conversionDouble(t) == donnees_dbl );;
+	ASSERT( conversionInt(t) == donnees_int,    0 );
+	ASSERT( conversionDouble(t) == donnees_dbl, 1 );
 }
 
 int main() {
+	cout << "Lancement de l'affichage de litTableauCSV avec le nombre de colonnes : " << endl;
 	afficheTableau(litTableauCSV("donnees/volumes_d_eau_distribues.csv", 2));
-	cout << endl;
+	cout << "Lancement de l'affichage de litTableauCSV sans le nombre de colonnes : " << endl;
 	afficheTableau(litTableauCSV("donnees/volumes_d_eau_distribues.csv"));
-	cout << "Lancement des tests de litTableauCSV:" << endl;
+	cout << "Lancement des tests de litTableauCSV:";
 	litTableauCSVTest();
-	cout << "Lancement des tests de conversion:" << endl;
+	cout << "Lancement des tests de colonneTest:";
+	colonneTest();
+	cout << "Lancement des tests de conversion:";
 	conversionTest();
 }

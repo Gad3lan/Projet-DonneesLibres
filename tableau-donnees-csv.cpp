@@ -96,6 +96,12 @@ vector<double> conversionDouble(vector<string> t) {
 	vector<double> tab_double;
 
 	for (int i = 0; i < t.size(); i++) {
+		for (int j = 0; j < t[i].size(); j++) {
+			if (t[i][j] == ',') {
+				t[i][j] = '.';
+				break;
+			}
+		}
 		tab_double.push_back(stod(t[i]));
 	}
 	return tab_double;

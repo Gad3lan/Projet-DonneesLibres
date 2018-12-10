@@ -5,7 +5,7 @@
 using namespace std;
 
 /** Infrastructure minimale de test modifiée pour visualiser les réussites**/
-#define ASSERT(test, t) if (!(test)) cout << " Test failed in file " << __FILE__ << " line " << __LINE__ << ": " #test << endl; else if (t == 1) cout << "\tOK!"; else if (t == 2) cout << "\t\tOK!"
+#define ASSERT(test, t) if (!(test)) cout << " Test failed in file " << __FILE__ << " line " << __LINE__ << ": " #test << endl; else if (t == 1) cout << "\tOK!\n"; else if (t == 2) cout << "\t\tOK!\n"
 
 vector<int> c = { 1, 5, 3, 5, 1 };
 vector<vector<int>> t = { {1, 2}, {2,4}, {3,1}, {0,0} };
@@ -59,17 +59,12 @@ void testColonne() {
 int main() {
 	cout << "Lancement des tests de moyenne:";
 	testMoyenne();
-	cout << endl;
 	cout << "Lancement des tests de somme:";
 	testSomme();
-	cout << endl;
 	cout << "Lancement des tests de indiceMax:";
 	testIndiceMax();
-	cout << endl;
 	cout << "Lancement des tests de litTableauInt:";
 	testLitTableauInt();
-	cout << endl;
 	cout << "Lancement des tests de colonne:";
 	testColonne();
-	cout << endl;
 }

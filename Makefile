@@ -1,4 +1,4 @@
-./CXXFLAGS=-Wall -pedantic -std=c++11 -g -Wno-sign-compare
+CXXFLAGS= -std=c++11 -Wall -pedantic -g -Wno-sign-compare
 LINK.o = $(LINK.cc)
 
 PROGRAMS=eau-total eau-moyen eau-max eau-tout-en-un \
@@ -8,7 +8,10 @@ PROGRAMS=eau-total eau-moyen eau-max eau-tout-en-un \
 	getline-exemple \
 	eau-moyen-csv eau-total-csv eau-max-csv \
 	tableau-donnees-csv-test \
-	arbres-hauteur
+	arbres-hauteur \
+	dechets-csv \
+	velib \
+	conso-voitures
 
 all: $(PROGRAMS)
 
@@ -19,6 +22,10 @@ dechets-tableau2: dechets-tableau2.o tableau-donnees.o
 eau-tout-en-un2: eau-tout-en-un2.o tableau-donnees.o
 
 arbres-hauteur: tableau-donnees-csv.o tableau-donnees.o arbres-hauteur.o
+dechets-csv: tableau-donnees-csv.o dechets-csv.o
+velib: tableau-donnees-csv.o velib.o
+conso-voitures: tableau-donnees-csv.o conso-voitures.o
+
 
 # eau-max eau-max-csv doivent être comparés à la main
 
